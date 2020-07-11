@@ -35,7 +35,7 @@ module.exports = class Deployment {
     const newPromotion = this.getTaskPromotionStatus(deployment);
 
     return Object.keys(newPromotion)
-      .filter((k) => !(k in newPromotion) || newPromotion[k] !== this.taskGroupPromotionStatus[k]);
+      .filter((k) => !(k in newPromotion) || (newPromotion[k] && newPromotion[k] !== this.taskGroupPromotionStatus[k]));
   }
 
   async update() {
