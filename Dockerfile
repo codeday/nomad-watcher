@@ -1,5 +1,6 @@
 FROM node:alpine
 
+RUN apk add git
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
