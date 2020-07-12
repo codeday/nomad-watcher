@@ -17,7 +17,6 @@ function onDeploy(deployment) {
     .setTitle(deployment.JobID)
     .setDescription(deployment.StatusDescription)
     .setColor(colors[deployment.Status] || colors.running)
-    .setTimestamp();
 
   webhook.send(embed);
 }
@@ -29,7 +28,6 @@ function onPromote(deployment, promoted) {
       .setTitle(`${deployment.JobID}/${f}`)
       .setDescription('Canary promoted')
       .setColor(14408667)
-      .setTimestamp();
     webhook.send(embed);
   });
 }
