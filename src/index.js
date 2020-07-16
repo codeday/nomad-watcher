@@ -16,20 +16,12 @@ function onDeploy(deployment) {
     .setURL(`${process.env.NOMAD_ADDR}/ui/jobs/${deployment.JobID}`)
     .setTitle(deployment.JobID)
     .setDescription(deployment.StatusDescription)
-    .setColor(colors[deployment.Status] || colors.running)
+    .setColor(colors[deployment.Status] || colors.running);
 
   webhook.send(embed);
 }
 
 function onPromote(deployment, promoted) {
-  promoted.forEach((f) => {
-    const embed = new MessageBuilder()
-      .setURL(`${process.env.NOMAD_ADDR}/ui/jobs/${deployment.JobID}/${f}`)
-      .setTitle(`${deployment.JobID}/${f}`)
-      .setDescription('Canary promoted')
-      .setColor(14408667)
-    webhook.send(embed);
-  });
 }
 
 const jobWatchers = {};
